@@ -21,7 +21,7 @@
     
     
     CGRect frame = [[self view] bounds];
-    //frame.size.height = 200; // not too tall
+    frame.size.height = 400; 
     CPTGraphHostingView *chartView = [[CPTGraphHostingView alloc] initWithFrame: frame];
     [[self view] addSubview:chartView];
     
@@ -35,8 +35,8 @@
     graph.paddingBottom = 20.0;
     
     plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0) length:CPTDecimalFromFloat(100)];
-    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0) length:CPTDecimalFromFloat(100)];
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0) length:CPTDecimalFromFloat(1000)];
+    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0) length:CPTDecimalFromFloat(6000)];
     
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
     
@@ -46,14 +46,14 @@
     x.borderWidth = 0;
     x.labelExclusionRanges = [NSArray arrayWithObjects:
                               [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-100)
-                                                          length:CPTDecimalFromFloat(300)], nil];
+                                                          length:CPTDecimalFromFloat(1100)], nil];
     
     CPTXYAxis *y = axisSet.yAxis;
     y.majorIntervalLength = CPTDecimalFromFloat(10);
     y.minorTicksPerInterval = 1;
     y.labelExclusionRanges = [NSArray arrayWithObjects:
                               [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-100)
-                                                          length:CPTDecimalFromFloat(300)], nil];
+                                                          length:CPTDecimalFromFloat(6100)], nil];
     
     CPTScatterPlot *sp = [[CPTScatterPlot alloc] init];
     sp.identifier = @"PLOT";
@@ -70,7 +70,7 @@
 }
 
 - (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-    return 100;
+    return 1000;
 }
 
 - (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum
